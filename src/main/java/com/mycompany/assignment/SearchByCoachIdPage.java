@@ -178,10 +178,12 @@ public class SearchByCoachIdPage extends javax.swing.JFrame {
         int row = dataTable.getSelectedRow();
         
         String name = dataTable.getModel().getValueAt(row, 1).toString();
+        String sports = dataTable.getModel().getValueAt(row, 6).toString();
         
         ScheduleRegPage scheduleRegPage = new ScheduleRegPage();
         scheduleRegPage.setVisible(true);
-        scheduleRegPage.nameField.setText(name);
+        scheduleRegPage.nameLabel.setText(name);
+        scheduleRegPage.sportLabel.setText(sports);
         
         this.dispose();
     }//GEN-LAST:event_newScheduleButtonActionPerformed

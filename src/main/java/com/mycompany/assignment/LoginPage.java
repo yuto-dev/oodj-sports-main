@@ -125,7 +125,7 @@ public class LoginPage extends javax.swing.JFrame {
         try {
             File file = new File("admin.txt");
             Scanner sc = new Scanner(file);
-            
+            boolean loginSuccess = false;
 
             while (sc.hasNext()) {
                 String s = sc.nextLine();
@@ -136,9 +136,12 @@ public class LoginPage extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "successfully logged in");
                     AdminMainPage mainPage = new AdminMainPage();
                     mainPage.setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Invalid credentials");
+                    loginSuccess = true;
+                    break;
                 }
+            }
+            if (!loginSuccess) {
+                JOptionPane.showMessageDialog(null, "Invalid credentials");
             }
 
         } catch (IOException e) {
@@ -165,6 +168,7 @@ public class LoginPage extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "successfully logged in");
                     StudentMainPage studentMainPage = new StudentMainPage();
                     studentMainPage.setVisible(true);
+                    studentMainPage.jLabel1.setText(credentials[1]);
                     loginSuccess = true;
                     break;
                 }

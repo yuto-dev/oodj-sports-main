@@ -65,11 +65,11 @@ public class ScheduleDisplayPage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name", "Date", "Time", "Duration"
+                "Name", "Sports", "Date", "Time", "Duration"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

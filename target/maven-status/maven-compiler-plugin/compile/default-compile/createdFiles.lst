@@ -52,6 +52,7 @@ com\mycompany\assignment\SearchByCoachIdPage$1.class
 com\mycompany\assignment\ScheduleDisplayPage$1.class
 com\mycompany\assignment\RegScheduleDisplayPage$1.class
 com\mycompany\assignment\GuestRegPage$2.class
+com\mycompany\assignment\StudentMainPage$3.class
 com\mycompany\assignment\SearchBySportIdPage$1.class
 com\mycompany\assignment\GuestMainPage.class
 com\mycompany\assignment\AdminMainPage$2.class

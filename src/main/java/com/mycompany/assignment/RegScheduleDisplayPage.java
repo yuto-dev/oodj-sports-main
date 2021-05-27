@@ -5,6 +5,12 @@
  */
 package com.mycompany.assignment;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author rong0
@@ -16,6 +22,35 @@ public class RegScheduleDisplayPage extends javax.swing.JFrame {
      */
     public RegScheduleDisplayPage() {
         initComponents();
+        
+         try {
+            File student = new File("student.txt");
+//            File coach = new File("coach.txt");
+//            File schedule = new File("schedule.txt");
+            
+            BufferedReader stbr = new BufferedReader(new FileReader(student));
+//            BufferedReader cbr = new BufferedReader(new FileReader(coach));
+//            BufferedReader scbr = new BufferedReader(new FileReader(schedule));
+            
+            DefaultTableModel model = (DefaultTableModel)dataTable.getModel();
+            
+            Object[] studentLines = stbr.lines().toArray();
+//            Object[] coachLines = cbr.lines().toArray();
+//            Object[] scheduleLines = scbr.lines().toArray();
+            
+            for (int i=0;i<studentLines.length;i++){
+                String stLines = studentLines[i].toString();
+                String[] studentdata = stLines.split(",");
+                
+                model.addRow(studentdata);
+            }
+            stbr.close();
+//            cbr.close();
+//            scbr.close();
+        } catch (IOException e) {
+            
+        }
+        
     }
 
     /**
@@ -29,6 +64,7 @@ public class RegScheduleDisplayPage extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         dataTable = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,13 +93,17 @@ public class RegScheduleDisplayPage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(54, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -107,6 +147,7 @@ public class RegScheduleDisplayPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable dataTable;
+    protected javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
