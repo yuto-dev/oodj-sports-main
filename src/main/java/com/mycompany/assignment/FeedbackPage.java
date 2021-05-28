@@ -41,6 +41,7 @@ public class FeedbackPage extends javax.swing.JFrame {
         addButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         nameField = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,12 +58,24 @@ public class FeedbackPage extends javax.swing.JFrame {
 
         jLabel2.setText("Name");
 
+        nameField.setEditable(false);
+        nameField.setEnabled(false);
+
+        jButton1.setText("Cancel");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
                 .addComponent(addButton)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -88,7 +101,9 @@ public class FeedbackPage extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(ratingList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
-                .addComponent(addButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addButton)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
 
@@ -101,7 +116,7 @@ public class FeedbackPage extends javax.swing.JFrame {
         String sports = "";
         String coach = "";
         String rating = ratingList.getSelectedItem().toString();
-        
+
         try {
             File oldFile = new File("student.txt");
             File newFile = new File("temp.txt");
@@ -120,7 +135,7 @@ public class FeedbackPage extends javax.swing.JFrame {
                     if (name.equals(data[1])) {
                         password = data[2];
                         sports = data[3];
-                        coach = data[4] ;
+                        coach = data[4];
                         data[5] = rating;
                     }
 
@@ -139,16 +154,28 @@ public class FeedbackPage extends javax.swing.JFrame {
             oldFile.delete();
             newFile.renameTo(oldFile);
 
+            StudentMainPage studentMainPage = new StudentMainPage();
+            studentMainPage.setVisible(true);
+            this.dispose();
+            studentMainPage.jLabel1.setText(nameField.getText());
+
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
-    
+
     }//GEN-LAST:event_addButtonActionPerformed
 
-/**
- * @param args the command line arguments
- */
-public static void main(String args[]) {
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        StudentMainPage studentMainPage = new StudentMainPage();
+        studentMainPage.setVisible(true);
+        this.dispose();
+        studentMainPage.jLabel1.setText(nameField.getText());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -160,30 +187,20 @@ public static void main(String args[]) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
 
-}
+                }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FeedbackPage.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-
-catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FeedbackPage.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-
-catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FeedbackPage.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-
-catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FeedbackPage.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FeedbackPage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(FeedbackPage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FeedbackPage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FeedbackPage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -197,6 +214,7 @@ catch (javax.swing.UnsupportedLookAndFeelException ex) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     protected javax.swing.JTextField nameField;

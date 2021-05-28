@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -60,6 +61,7 @@ public class SearchByCoachIdPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         editButton = new javax.swing.JButton();
         newScheduleButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,11 +70,11 @@ public class SearchByCoachIdPage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Name", "Phone", "Address", "Rate", "Center", "Sports"
+                "Id", "Name", "Phone", "Address", "Rate", "Center", "Sports", "Join Date"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -87,7 +89,7 @@ public class SearchByCoachIdPage extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Search:");
+        jLabel1.setText("Search (By Id):");
 
         editButton.setText("Edit");
         editButton.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +105,13 @@ public class SearchByCoachIdPage extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Exit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -114,30 +123,32 @@ public class SearchByCoachIdPage extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(25, 25, 25)
                         .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 374, Short.MAX_VALUE))
+                        .addGap(0, 574, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(newScheduleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(editButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(editButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(38, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(newScheduleButton)
                         .addGap(18, 18, 18)
-                        .addComponent(editButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(editButton)
+                        .addGap(19, 19, 19)
+                        .addComponent(jButton1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -161,6 +172,7 @@ public class SearchByCoachIdPage extends javax.swing.JFrame {
         String rate = dataTable.getModel().getValueAt(row, 4).toString();
         String center = dataTable.getModel().getValueAt(row, 5).toString();
         String sports = dataTable.getModel().getValueAt(row, 6).toString();
+        String joindate = dataTable.getModel().getValueAt(row, 7).toString();
         
         CoachEditPage coachEditPage = new CoachEditPage();
         coachEditPage.setVisible(true);
@@ -170,6 +182,7 @@ public class SearchByCoachIdPage extends javax.swing.JFrame {
         coachEditPage.rateField.setText(rate);
         coachEditPage.CenterList.setSelectedItem(center);
         coachEditPage.SportList.setSelectedItem(sports);
+        coachEditPage.datePicker1.setText(joindate);
         
         this.dispose();
     }//GEN-LAST:event_editButtonActionPerformed
@@ -187,6 +200,12 @@ public class SearchByCoachIdPage extends javax.swing.JFrame {
         
         this.dispose();
     }//GEN-LAST:event_newScheduleButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        AdminDisplayPage adminDisplayPage = new AdminDisplayPage();
+        adminDisplayPage.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,6 +246,7 @@ public class SearchByCoachIdPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable dataTable;
     private javax.swing.JButton editButton;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton newScheduleButton;

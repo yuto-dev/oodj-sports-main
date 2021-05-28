@@ -67,6 +67,7 @@ public class GuestRegPage extends javax.swing.JFrame {
         passField = new javax.swing.JPasswordField();
         coachList = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,12 +94,21 @@ public class GuestRegPage extends javax.swing.JFrame {
 
         jLabel5.setText("Coach");
 
+        jButton1.setText("Cancel");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
                 .addComponent(registerButton)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -144,7 +154,9 @@ public class GuestRegPage extends javax.swing.JFrame {
                     .addComponent(coachList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(registerButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(registerButton)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
 
@@ -174,7 +186,7 @@ public class GuestRegPage extends javax.swing.JFrame {
                 }
             }
             if (password.equals(confirmpassword)) {
-                bw.write(id + "," + name + "," + password + "," + sports + "," + coach + ",1");
+                bw.write(id + "," + name + "," + password + "," + sports + "," + coach + ",0");
                 bw.newLine();
                 bw.close();
                 LoginPage loginPage = new LoginPage();
@@ -225,6 +237,12 @@ public class GuestRegPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_SportsListActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        GuestMainPage guestMainPage = new GuestMainPage();
+        guestMainPage.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -265,6 +283,7 @@ public class GuestRegPage extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> SportsList;
     private javax.swing.JComboBox<String> coachList;
     private javax.swing.JPasswordField confirmpasField;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

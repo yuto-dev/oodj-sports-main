@@ -40,6 +40,7 @@ public class RegScheduleDisplayPage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         dataTable = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,6 +88,13 @@ public class RegScheduleDisplayPage extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jButton2.setText("Exit");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,23 +103,28 @@ public class RegScheduleDisplayPage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(22, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -120,70 +133,77 @@ public class RegScheduleDisplayPage extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         jPanel1.setVisible(true);
-
+        
         StudentMainPage studentMainPage = new StudentMainPage();
-
+        
         try {
             String name = jLabel2.getText();
-
+            
             boolean foundStudent = false;
             boolean foundCoach = false;
             boolean foundSchedule = false;
-
+            
             File student = new File("student.txt");
             File coach = new File("coach.txt");
             File schedule = new File("schedule.txt");
-
+            
             BufferedReader stbr = new BufferedReader(new FileReader(student));
             BufferedReader cbr = new BufferedReader(new FileReader(coach));
             BufferedReader scbr = new BufferedReader(new FileReader(schedule));
-
+            
             DefaultTableModel model = (DefaultTableModel) dataTable.getModel();
-
+            
             Object[] studentLines = stbr.lines().toArray();
             Object[] coachLines = cbr.lines().toArray();
             Object[] scheduleLines = scbr.lines().toArray();
-
+            
             for (int i = 0; i < studentLines.length; i++) {
                 String stLines = studentLines[i].toString();
                 String[] studentdata = stLines.split(",");
-
+                
                 if (name.equals(studentdata[1].toString())) {
                     foundStudent = true;
-
+                    
                     for (int j = 0; j < coachLines.length; j++) {
                         String cLines = coachLines[j].toString();
                         String[] coachdata = cLines.split(",");
-
+                        
                         if (studentdata[4].equals(coachdata[1])) {
                             foundCoach = true;
-
+                            
                             for (int k = 0; k < scheduleLines.length; k++) {
                                 String scLines = scheduleLines[k].toString();
                                 String[] scheduledata = scLines.split(",");
                                 
-                                if(coachdata[1].equals(scheduledata[0])){
+                                if (coachdata[1].equals(scheduledata[0])) {
                                     foundCoach = true;
                                     model.addRow(scheduledata);
                                 }
                             }
-                        } 
+                        }                        
                     }
                     break;
                 }
             }
-
+            
             if (!foundStudent) {
                 System.out.println("not ok");
             }
-
+            
             stbr.close();
             cbr.close();
 //            scbr.close();
         } catch (IOException e) {
-
+            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        StudentMainPage studentMainPage = new StudentMainPage();
+        studentMainPage.setVisible(true);
+        this.dispose();
+        studentMainPage.jLabel1.setText(jLabel2.getText());
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,6 +243,7 @@ public class RegScheduleDisplayPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable dataTable;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     protected javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
