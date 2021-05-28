@@ -5,6 +5,13 @@
  */
 package com.mycompany.assignment;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
 /**
  *
  * @author rong0
@@ -111,9 +118,46 @@ public class DisplayPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        SearchByCoachRatingPage searchByCoachRatingPage = new SearchByCoachRatingPage();
-        searchByCoachRatingPage.setVisible(true);
-        this.dispose();
+        try {
+            File reference = new File("student.txt");
+            File ratings = new File("ratings.txt");
+            Scanner sc = new Scanner(reference);
+            FileWriter fw = new FileWriter(ratings);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            boolean printed = false;
+            int count = 0;
+
+            while (sc.hasNext()) {
+                String line = sc.nextLine();
+                String[] array = line.split("\n");
+                count++;
+
+                for (int i = 0; i < array.length; i++) {
+                    String[] data = array[i].split(",");
+                    if(data.length!=count && !printed){
+                        pw.print(data.length);
+                        pw.print("\n");
+                        printed = true;
+                    }
+                    pw.print(data[4]);
+                    pw.print("\n");
+                    pw.print(data[5]);
+                    pw.print("\n");
+                }
+            }
+
+            sc.close();
+            pw.flush();
+            pw.close();
+
+            SearchByCoachRatingPage searchByCoachRatingPage = new SearchByCoachRatingPage();
+            searchByCoachRatingPage.setVisible(true);
+            this.dispose();
+
+        } catch (IOException e) {
+
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -154,7 +198,7 @@ public class DisplayPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
+    protected javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     // End of variables declaration//GEN-END:variables

@@ -1,8 +1,0 @@
-coach => students => student.txt => student[coach] => student[rating]
-
-var x = sum;
-var y = counter;
-
-int rating = x/y;
-
-line 52 => studentLines.length = all records

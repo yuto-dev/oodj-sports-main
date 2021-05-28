@@ -19,6 +19,7 @@ com\mycompany\assignment\RegScheduleDisplayPage$3.class
 com\mycompany\assignment\SearchBySportIdPage$4.class
 com\mycompany\assignment\ScheduleDisplayPage.class
 com\mycompany\assignment\DisplayPage$3.class
+com\mycompany\assignment\SearchByCoachRatingPage$3.class
 com\mycompany\assignment\GuestMainPage$4.class
 com\mycompany\assignment\SearchByCoachIdPage$4.class
 com\mycompany\assignment\SearchByStudentIdPage$1.class
@@ -66,6 +67,7 @@ com\mycompany\assignment\SearchBySportIdPage$1.class
 com\mycompany\assignment\GuestMainPage.class
 com\mycompany\assignment\AdminMainPage$2.class
 com\mycompany\assignment\SportsEditPage$1.class
+com\mycompany\assignment\RatingStats.class
 com\mycompany\assignment\SportDisplayPage$1.class
 com\mycompany\assignment\StudentMainPage$4.class
 com\mycompany\assignment\AdminRegPage$3.class
