@@ -150,7 +150,7 @@ public class ScheduleRegPage extends javax.swing.JFrame {
            File file = new File("schedule.txt");
            FileWriter fw = new FileWriter(file,true);
            BufferedWriter bw = new BufferedWriter(fw);
-           bw.write(name + "," + date + "," + time + "," + duration);
+           bw.write(name + "," + sports + "," + date + "," + time + "," + duration);
            bw.newLine();
            bw.close();
            
