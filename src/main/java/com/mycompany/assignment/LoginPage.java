@@ -168,11 +168,12 @@ public class LoginPage extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "successfully logged in");
                     StudentMainPage studentMainPage = new StudentMainPage();
                     studentMainPage.setVisible(true);
-                    studentMainPage.jLabel1.setText(credentials[1]);
+                    studentMainPage.jLabel1.setText(jTextField1.getText());
                     loginSuccess = true;
                     break;
                 }
             }
+            sc.close();
 
             if (!loginSuccess) {
                 JOptionPane.showMessageDialog(null, "Invalid Credentials");

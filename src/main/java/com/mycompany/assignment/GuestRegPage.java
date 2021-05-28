@@ -25,19 +25,23 @@ public class GuestRegPage extends javax.swing.JFrame {
         initComponents();
 
         try {
-            File file = new File("sports.txt");
-            Scanner sc = new Scanner(file);
+            File sport = new File("sports.txt");
+            File coach = new File("coach.txt");
+            Scanner ssc = new Scanner(sport);
+            Scanner csc = new Scanner(coach);
 
-            while (sc.hasNext()) {
-                String s = sc.next();
-                String[] array = s.split("\n");
+            while (ssc.hasNext()) {
+                String s = ssc.next();
+                String[] sArray = s.split("\n");
 
-                for (int i = 0; i < array.length; i++) {
-                    String[] sports = array[i].split(",");
+                for (int i = 0; i < sArray.length; i++) {
+                    String[] sports = sArray[i].split(",");
                     SportsList.addItem(sports[1]);
                 }
             }
-            sc.close();
+
+            ssc.close();
+            csc.close();
         } catch (IOException e) {
 
         }
@@ -61,6 +65,8 @@ public class GuestRegPage extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         confirmpasField = new javax.swing.JPasswordField();
         passField = new javax.swing.JPasswordField();
+        coachList = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,59 +81,70 @@ public class GuestRegPage extends javax.swing.JFrame {
             }
         });
 
+        SportsList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SportsListActionPerformed(evt);
+            }
+        });
+
         jLabel2.setText("Password");
 
         jLabel4.setText("Confirm Password");
+
+        jLabel5.setText("Coach");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(457, Short.MAX_VALUE)
-                        .addComponent(registerButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nameField, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                            .addComponent(passField)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(SportsList, javax.swing.GroupLayout.Alignment.LEADING, 0, 160, Short.MAX_VALUE)
-                                .addComponent(confirmpasField, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(registerButton)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(coachList, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(nameField)
+                        .addComponent(passField)
+                        .addComponent(SportsList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(confirmpasField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(passField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(confirmpasField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(SportsList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(52, 52, 52)
-                        .addComponent(registerButton)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(passField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(confirmpasField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(SportsList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(coachList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(registerButton)
                 .addContainerGap())
         );
 
@@ -137,6 +154,7 @@ public class GuestRegPage extends javax.swing.JFrame {
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         String name = nameField.getText();
         String sports = SportsList.getSelectedItem().toString();
+        String coach = coachList.getSelectedItem().toString();
         String password = String.valueOf(passField.getPassword());
         String confirmpassword = String.valueOf(confirmpasField.getPassword());
         int id = 1;
@@ -156,7 +174,7 @@ public class GuestRegPage extends javax.swing.JFrame {
                 }
             }
             if (password.equals(confirmpassword)) {
-                bw.write(id + "," + name + "," + password + "," + sports);
+                bw.write(id + "," + name + "," + password + "," + sports + "," + coach + ",1");
                 bw.newLine();
                 bw.close();
                 LoginPage loginPage = new LoginPage();
@@ -170,6 +188,42 @@ public class GuestRegPage extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_registerButtonActionPerformed
+
+    private void SportsListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SportsListActionPerformed
+        coachList.removeAllItems();
+
+        try {
+            File sport = new File("sports.txt");
+            File coach = new File("coach.txt");
+            Scanner ssc = new Scanner(sport);
+            Scanner csc = new Scanner(coach);
+
+            while (ssc.hasNext()) {
+                String s = ssc.next();
+                String[] sArray = s.split("\n");
+
+                for (int i = 0; i < sArray.length; i++) {
+                    while (csc.hasNext()) {
+                        String c = csc.next();
+                        String[] cArray = c.split("\n");
+
+                        for (int j = 0; j < cArray.length; j++) {
+                            String[] coaches = cArray[j].split(",");
+
+                            if (SportsList.getSelectedItem().equals(coaches[6])) {
+                                coachList.addItem(coaches[1]);
+                            }
+                        }
+                    }
+                }
+            }
+
+            ssc.close();
+            csc.close();
+        } catch (IOException e) {
+
+        }
+    }//GEN-LAST:event_SportsListActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,11 +263,13 @@ public class GuestRegPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> SportsList;
+    private javax.swing.JComboBox<String> coachList;
     private javax.swing.JPasswordField confirmpasField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     protected javax.swing.JTextField nameField;
     private javax.swing.JPasswordField passField;
     private javax.swing.JButton registerButton;
