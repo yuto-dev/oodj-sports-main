@@ -24,14 +24,14 @@ public class CoachEditPage extends javax.swing.JFrame {
      */
     public CoachEditPage() {
         initComponents();
-        
+
         CenterList.addItem(SportCenters.CenterA.toString());
         CenterList.addItem(SportCenters.CenterB.toString());
         CenterList.addItem(SportCenters.CenterC.toString());
         CenterList.addItem(SportCenters.CenterD.toString());
         CenterList.addItem(SportCenters.CenterE.toString());
-        
-                try {
+
+        try {
             File sport = new File("sports.txt");
             File coach = new File("coach.txt");
             Scanner ssc = new Scanner(sport);
@@ -53,7 +53,6 @@ public class CoachEditPage extends javax.swing.JFrame {
 
         }
 
-        
     }
 
     /**
@@ -78,7 +77,7 @@ public class CoachEditPage extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         rateField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
         jLabel8 = new javax.swing.JLabel();
@@ -123,10 +122,10 @@ public class CoachEditPage extends javax.swing.JFrame {
 
         jLabel4.setText("Center");
 
-        jButton1.setText("Cancel");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        backButton.setText("Cancel");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -143,7 +142,7 @@ public class CoachEditPage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(backButton)
                         .addGap(18, 18, 18)
                         .addComponent(editButton))
                     .addGroup(layout.createSequentialGroup()
@@ -210,7 +209,7 @@ public class CoachEditPage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editButton)
-                    .addComponent(jButton1))
+                    .addComponent(backButton))
                 .addContainerGap())
         );
 
@@ -230,70 +229,66 @@ public class CoachEditPage extends javax.swing.JFrame {
     }//GEN-LAST:event_SportListActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-       
 
-            String name = nameField.getText();
-            String address = addressField.getText();
-            String phone = phoneField.getText();
-            String rate = rateField.getText();
-            String center = CenterList.getSelectedItem().toString();
-            String sports = SportList.getSelectedItem().toString();
-            String joindate = datePicker1.getText();
-            String termdate = datePicker2.getText();
-            
-            try {
-                File oldFile = new File("coach.txt");
-                File newFile = new File("temp.txt");
-                Scanner sc = new Scanner(oldFile);
-                FileWriter fw = new FileWriter(newFile);
-                BufferedWriter bw = new BufferedWriter(fw);
-                PrintWriter pw = new PrintWriter(bw);
-                
-                while (sc.hasNext()){
-                    String s = sc.nextLine();
-                    String[] lines = s.split("\n");
-                    
-                    for (int i=0;i<lines.length;i++){
-                        String[] data = lines[i].split(",");
-                        
-                        if(name.equals(data[0])){
-                            data[1] = phone;
-                            data[2] = address;
-                            data[3] = rate;
-                            data[4] = center;
-                            data[5] = sports;
-                        }
-                        
-                        for (int j=0;j<data.length;j++){
-                            pw.print(data[j]);
-                            if (i<data.length - 1){
-                                pw.print(",");
-                            }
-                        }
-                        pw.print("\n");
+        String name = nameField.getText();
+        String address = addressField.getText();
+        String phone = phoneField.getText();
+        String rate = rateField.getText();
+        String center = CenterList.getSelectedItem().toString();
+        String sports = SportList.getSelectedItem().toString();
+        String joindate = datePicker1.getText();
+        String termdate = datePicker2.getText();
+
+        try {
+            File oldFile = new File("coach.txt");
+            File newFile = new File("temp.txt");
+            Scanner sc = new Scanner(oldFile);
+            FileWriter fw = new FileWriter(newFile);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+
+            while (sc.hasNext()) {
+                String s = sc.nextLine();
+                String[] lines = s.split("\n");
+
+                for (int i = 0; i < lines.length; i++) {
+                    String[] data = lines[i].split(",");
+
+                    if (name.equals(data[1])) {
+                        data[2] = phone;
+                        data[3] = address;
+                        data[4] = rate;
+                        data[5] = center;
+                        data[6] = sports;
                     }
-                }
-                sc.close();
-                pw.flush();
-                pw.close();
-                oldFile.delete();
-                newFile.renameTo(oldFile);
-                
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-            }
-            
 
-            AdminMainPage homepage = new AdminMainPage();
-            homepage.setVisible(true);
-            this.dispose();
+                    for (int j = 0; j < data.length; j++) {
+                        pw.print(data[j]);
+                        pw.print(",");
+                    }
+                    pw.print("\n");
+                }
+            }
+            sc.close();
+            pw.flush();
+            pw.close();
+            oldFile.delete();
+            newFile.renameTo(oldFile);
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        AdminMainPage homepage = new AdminMainPage();
+        homepage.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_editButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         SearchByCoachIdPage searchByCoachIdPage = new SearchByCoachIdPage();
         searchByCoachIdPage.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,10 +329,10 @@ public class CoachEditPage extends javax.swing.JFrame {
     protected javax.swing.JComboBox<String> CenterList;
     protected javax.swing.JComboBox<String> SportList;
     protected javax.swing.JTextField addressField;
+    private javax.swing.JButton backButton;
     protected com.github.lgooddatepicker.components.DatePicker datePicker1;
     private com.github.lgooddatepicker.components.DatePicker datePicker2;
     private javax.swing.JButton editButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

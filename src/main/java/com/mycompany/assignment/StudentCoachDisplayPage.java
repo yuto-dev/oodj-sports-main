@@ -5,6 +5,10 @@
  */
 package com.mycompany.assignment;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -20,6 +24,26 @@ public class StudentCoachDisplayPage extends javax.swing.JFrame {
      */
     public StudentCoachDisplayPage() {
         initComponents();
+
+        dataTable.setAutoCreateRowSorter(true);
+
+        try {
+            File file = new File("coach.txt");
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            DefaultTableModel model = (DefaultTableModel) dataTable.getModel();
+
+            Object[] tableLines = br.lines().toArray();
+
+            for (int i = 0; i < tableLines.length; i++) {
+
+                String line = tableLines[i].toString();
+                String[] sArray = line.split(",");
+                model.addRow(sArray);
+            }
+            br.close();
+        } catch (IOException e) {
+
+        }
     }
 
     /**
@@ -33,7 +57,7 @@ public class StudentCoachDisplayPage extends javax.swing.JFrame {
 
         searchField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         dataTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -48,10 +72,10 @@ public class StudentCoachDisplayPage extends javax.swing.JFrame {
 
         jLabel1.setText("Search (By Id):");
 
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -86,12 +110,12 @@ public class StudentCoachDisplayPage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
+                        .addComponent(backButton))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -101,7 +125,7 @@ public class StudentCoachDisplayPage extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                    .addComponent(backButton)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
@@ -115,18 +139,18 @@ public class StudentCoachDisplayPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
-        DefaultTableModel model = (DefaultTableModel)dataTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) dataTable.getModel();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
         dataTable.setRowSorter(tr);
-        tr.setRowFilter(RowFilter.regexFilter(searchField.getText(),0));
+        tr.setRowFilter(RowFilter.regexFilter(searchField.getText(), 0));
     }//GEN-LAST:event_searchFieldKeyReleased
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         StudentMainPage studentMainPage = new StudentMainPage();
         studentMainPage.setVisible(true);
         this.dispose();
         studentMainPage.jLabel1.setText(jLabel2.getText());
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,8 +188,8 @@ public class StudentCoachDisplayPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
     private javax.swing.JTable dataTable;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     protected javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

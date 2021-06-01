@@ -27,31 +27,31 @@ public class GuestMainPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        displayCoachButton = new javax.swing.JButton();
+        displaySportScheduleButton = new javax.swing.JButton();
+        studentRegistrationPage = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Display Coach");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        displayCoachButton.setText("Display Coach");
+        displayCoachButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                displayCoachButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Display Sport Schedule");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        displaySportScheduleButton.setText("Display Sport Schedule");
+        displaySportScheduleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                displaySportScheduleButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Student Registration");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        studentRegistrationPage.setText("Student Registration");
+        studentRegistrationPage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                studentRegistrationPageActionPerformed(evt);
             }
         });
 
@@ -69,9 +69,9 @@ public class GuestMainPage extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(126, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(displayCoachButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(displaySportScheduleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(studentRegistrationPage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(122, 122, 122))
         );
@@ -79,11 +79,11 @@ public class GuestMainPage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(81, 81, 81)
-                .addComponent(jButton1)
+                .addComponent(displayCoachButton)
                 .addGap(34, 34, 34)
-                .addComponent(jButton2)
+                .addComponent(displaySportScheduleButton)
                 .addGap(33, 33, 33)
-                .addComponent(jButton3)
+                .addComponent(studentRegistrationPage)
                 .addGap(29, 29, 29)
                 .addComponent(jButton4)
                 .addContainerGap(35, Short.MAX_VALUE))
@@ -92,23 +92,23 @@ public class GuestMainPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void displayCoachButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayCoachButtonActionPerformed
         CoachDisplayPage coachDisplayPage = new CoachDisplayPage();
         coachDisplayPage.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_displayCoachButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void displaySportScheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displaySportScheduleButtonActionPerformed
         ScheduleDisplayPage scheduleDisplayPage = new ScheduleDisplayPage();
         scheduleDisplayPage.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_displaySportScheduleButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void studentRegistrationPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentRegistrationPageActionPerformed
         GuestRegPage guestRegPage = new GuestRegPage();
         guestRegPage.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_studentRegistrationPageActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         LoginPage loginPage = new LoginPage();
@@ -153,9 +153,9 @@ public class GuestMainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton displayCoachButton;
+    private javax.swing.JButton displaySportScheduleButton;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton studentRegistrationPage;
     // End of variables declaration//GEN-END:variables
 }

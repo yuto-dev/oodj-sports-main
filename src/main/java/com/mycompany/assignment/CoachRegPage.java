@@ -23,6 +23,7 @@ public class CoachRegPage extends javax.swing.JFrame {
      */
     public CoachRegPage() {
         initComponents();
+        
         CenterList.addItem(SportCenters.CenterA.toString());
         CenterList.addItem(SportCenters.CenterB.toString());
         CenterList.addItem(SportCenters.CenterC.toString());
@@ -40,7 +41,6 @@ public class CoachRegPage extends javax.swing.JFrame {
                 for (int i = 0; i < array.length; i++) {
                     String[] sports = array[i].split(",");
                     SportList.addItem(sports[1]);
-                    
                 }
             }
             sc.close();
@@ -71,7 +71,7 @@ public class CoachRegPage extends javax.swing.JFrame {
         CenterList = new javax.swing.JComboBox<>();
         SportList = new javax.swing.JComboBox<>();
         registerButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
         datePicker = new com.github.lgooddatepicker.components.DatePicker();
         jLabel7 = new javax.swing.JLabel();
 
@@ -108,10 +108,10 @@ public class CoachRegPage extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Cancel");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        backButton.setText("Cancel");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -154,7 +154,7 @@ public class CoachRegPage extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(registerButton)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(112, 112, 112))))
                 .addContainerGap())
         );
@@ -170,7 +170,9 @@ public class CoachRegPage extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
@@ -186,15 +188,10 @@ public class CoachRegPage extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel6)
                             .addComponent(rateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(66, 66, 66)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(registerButton)
-                                    .addComponent(jButton1)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel7)))))
+                        .addGap(66, 66, 66)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(registerButton)
+                            .addComponent(backButton))))
                 .addContainerGap())
         );
 
@@ -250,11 +247,11 @@ public class CoachRegPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_registerButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         AdminMainPage mainPage = new AdminMainPage();
         mainPage.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -295,8 +292,8 @@ public class CoachRegPage extends javax.swing.JFrame {
     protected javax.swing.JComboBox<String> CenterList;
     private javax.swing.JComboBox<String> SportList;
     private javax.swing.JTextField addressField;
+    private javax.swing.JButton backButton;
     private com.github.lgooddatepicker.components.DatePicker datePicker;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

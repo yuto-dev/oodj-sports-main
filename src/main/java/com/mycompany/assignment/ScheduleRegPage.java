@@ -43,7 +43,7 @@ public class ScheduleRegPage extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         sportLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,10 +64,10 @@ public class ScheduleRegPage extends javax.swing.JFrame {
 
         jLabel5.setText("Sport");
 
-        jButton1.setText("Cancel");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        backButton.setText("Cancel");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -77,7 +77,7 @@ public class ScheduleRegPage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(backButton)
                 .addGap(18, 18, 18)
                 .addComponent(registerButton)
                 .addGap(15, 15, 15))
@@ -132,7 +132,7 @@ public class ScheduleRegPage extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registerButton)
-                    .addComponent(jButton1))
+                    .addComponent(backButton))
                 .addGap(10, 10, 10))
         );
 
@@ -163,11 +163,11 @@ public class ScheduleRegPage extends javax.swing.JFrame {
         
     }//GEN-LAST:event_registerButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         SearchByCoachIdPage searchByCoachIdPage = new SearchByCoachIdPage();
         searchByCoachIdPage.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,8 +205,8 @@ public class ScheduleRegPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
     private com.github.lgooddatepicker.components.DatePicker datePicker1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

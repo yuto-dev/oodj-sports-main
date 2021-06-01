@@ -25,6 +25,7 @@ public class SearchByCoachIdPage extends javax.swing.JFrame {
      */
     public SearchByCoachIdPage() {
         initComponents();
+        
         dataTable.setAutoCreateRowSorter(true);
         
         try {

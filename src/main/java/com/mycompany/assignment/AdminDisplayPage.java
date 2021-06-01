@@ -34,39 +34,39 @@ public class AdminDisplayPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        coachIdButton = new javax.swing.JButton();
+        ratingButton = new javax.swing.JButton();
+        sportIdButton = new javax.swing.JButton();
+        studentIdButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Search By Coach Id");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        coachIdButton.setText("Search By Coach Id");
+        coachIdButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                coachIdButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Search By Rating");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        ratingButton.setText("Search By Rating");
+        ratingButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                ratingButtonActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Search By Sport Id");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        sportIdButton.setText("Search By Sport Id");
+        sportIdButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                sportIdButtonActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Search By Student Id");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        studentIdButton.setText("Search By Student Id");
+        studentIdButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                studentIdButtonActionPerformed(evt);
             }
         });
 
@@ -84,10 +84,10 @@ public class AdminDisplayPage extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(133, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(coachIdButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ratingButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(sportIdButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(studentIdButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(128, 128, 128))
         );
@@ -95,13 +95,13 @@ public class AdminDisplayPage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(jButton1)
+                .addComponent(coachIdButton)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(ratingButton)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(sportIdButton)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
+                .addComponent(studentIdButton)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
                 .addContainerGap(72, Short.MAX_VALUE))
@@ -110,25 +110,25 @@ public class AdminDisplayPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void coachIdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachIdButtonActionPerformed
         SearchByCoachIdPage searchByCoachIdPage = new SearchByCoachIdPage();
         searchByCoachIdPage.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_coachIdButtonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void sportIdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sportIdButtonActionPerformed
         SearchBySportIdPage searchBySportIdPage = new SearchBySportIdPage();
         searchBySportIdPage.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_sportIdButtonActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void studentIdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentIdButtonActionPerformed
         SearchByStudentIdPage searchByStudentIdPage = new SearchByStudentIdPage();
         searchByStudentIdPage.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_studentIdButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void ratingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ratingButtonActionPerformed
         try {
             File reference = new File("student.txt");
             File ratings = new File("ratings.txt");
@@ -146,6 +146,7 @@ public class AdminDisplayPage extends javax.swing.JFrame {
 
                 for (int i = 0; i < array.length; i++) {
                     String[] data = array[i].split(",");
+                    
                     if(data.length!=count && !printed){
                         pw.print(data.length);
                         pw.print("\n");
@@ -169,7 +170,7 @@ public class AdminDisplayPage extends javax.swing.JFrame {
         } catch (IOException e) {
 
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_ratingButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         AdminMainPage adminMainPage = new AdminMainPage();
@@ -216,10 +217,10 @@ public class AdminDisplayPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton coachIdButton;
     private javax.swing.JButton jButton2;
-    protected javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    protected javax.swing.JButton ratingButton;
+    private javax.swing.JButton sportIdButton;
+    private javax.swing.JButton studentIdButton;
     // End of variables declaration//GEN-END:variables
 }

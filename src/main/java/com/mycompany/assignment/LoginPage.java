@@ -36,9 +36,9 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        guestLoginButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        studentLoginButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,10 +46,10 @@ public class LoginPage extends javax.swing.JFrame {
 
         jLabel2.setText("Password");
 
-        jButton1.setText("Guest Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        guestLoginButton.setText("Guest Login");
+        guestLoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                guestLoginButtonActionPerformed(evt);
             }
         });
 
@@ -60,10 +60,10 @@ public class LoginPage extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Student Login");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        studentLoginButton.setText("Student Login");
+        studentLoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                studentLoginButtonActionPerformed(evt);
             }
         });
 
@@ -77,9 +77,9 @@ public class LoginPage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)
+                        .addComponent(studentLoginButton)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1))
+                        .addComponent(guestLoginButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(82, 82, 82)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,20 +104,20 @@ public class LoginPage extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton1))
+                    .addComponent(studentLoginButton)
+                    .addComponent(guestLoginButton))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void guestLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guestLoginButtonActionPerformed
         this.dispose();
         JOptionPane.showMessageDialog(null, "successfully logged in");
         GuestMainPage studentMainPage = new GuestMainPage();
         studentMainPage.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_guestLoginButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String password = String.valueOf(jPasswordField1.getPassword());
@@ -140,6 +140,7 @@ public class LoginPage extends javax.swing.JFrame {
                     break;
                 }
             }
+            sc.close();
             if (!loginSuccess) {
                 JOptionPane.showMessageDialog(null, "Invalid credentials");
             }
@@ -151,7 +152,7 @@ public class LoginPage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void studentLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentLoginButtonActionPerformed
         String password = String.valueOf(jPasswordField1.getPassword());
 
         try {
@@ -181,7 +182,7 @@ public class LoginPage extends javax.swing.JFrame {
         } catch (IOException e) {
 
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_studentLoginButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,12 +220,12 @@ public class LoginPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton guestLoginButton;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton studentLoginButton;
     // End of variables declaration//GEN-END:variables
 }

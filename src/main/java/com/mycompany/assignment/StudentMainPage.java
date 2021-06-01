@@ -5,6 +5,13 @@
  */
 package com.mycompany.assignment;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author rong0
@@ -28,36 +35,36 @@ public class StudentMainPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        coachDisplayButton = new javax.swing.JButton();
+        sportScheduleButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        ratingButton = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        editButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Coach");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        coachDisplayButton.setText("Coach");
+        coachDisplayButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                coachDisplayButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Sport Schedule");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        sportScheduleButton.setText("Sport Schedule");
+        sportScheduleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                sportScheduleButtonActionPerformed(evt);
             }
         });
 
         jLabel1.setText("jLabel1");
         jLabel1.setEnabled(false);
 
-        jButton3.setText("Rating");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        ratingButton.setText("Rating");
+        ratingButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                ratingButtonActionPerformed(evt);
             }
         });
 
@@ -68,10 +75,10 @@ public class StudentMainPage extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Edit");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        editButton.setText("Edit");
+        editButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                editButtonActionPerformed(evt);
             }
         });
 
@@ -80,18 +87,15 @@ public class StudentMainPage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(sportScheduleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(coachDisplayButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ratingButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(152, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -100,13 +104,13 @@ public class StudentMainPage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(coachDisplayButton)
                 .addGap(29, 29, 29)
-                .addComponent(jButton2)
+                .addComponent(sportScheduleButton)
                 .addGap(28, 28, 28)
-                .addComponent(jButton3)
+                .addComponent(ratingButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(jButton5)
+                .addComponent(editButton)
                 .addGap(28, 28, 28)
                 .addComponent(jButton4)
                 .addGap(36, 36, 36))
@@ -115,26 +119,26 @@ public class StudentMainPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void coachDisplayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coachDisplayButtonActionPerformed
         StudentCoachDisplayPage coachDisplayPage = new StudentCoachDisplayPage();
         coachDisplayPage.setVisible(true);
         this.dispose();
         coachDisplayPage.jLabel2.setText(jLabel1.getText());
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_coachDisplayButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void sportScheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sportScheduleButtonActionPerformed
         RegScheduleDisplayPage regScheduleDisplayPage = new RegScheduleDisplayPage();
         regScheduleDisplayPage.setVisible(true);
         regScheduleDisplayPage.jLabel2.setText(jLabel1.getText());
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_sportScheduleButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void ratingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ratingButtonActionPerformed
         FeedbackPage feedbackPage = new FeedbackPage();
         feedbackPage.setVisible(true);
         feedbackPage.nameField.setText(jLabel1.getText());
         this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_ratingButtonActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         LoginPage loginPage = new LoginPage();
@@ -142,15 +146,49 @@ public class StudentMainPage extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        
-        
-        StudentEditPage studentEditPage = new StudentEditPage();
-        studentEditPage.setVisible(true);
-        this.dispose();
-        studentEditPage.nameField.setText(jLabel1.getText());
-    
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+        String name = jLabel1.getText();
+        int id = 1;
+
+        try {
+            File file = new File("student.txt");
+            Scanner sc = new Scanner(file);
+
+            while (sc.hasNext()) {
+                String s = sc.next();
+                String[] array = s.split("\n");
+
+                for (int i = 0; i < array.length; i++) {
+                    {
+                        String[] sArray = array[i].split(",");
+
+                        String password = sArray[2];
+                        String sports = sArray[3];
+                        String coach = sArray[4];
+                        String rating = sArray[5];
+
+                        if (name.equals(sArray[1])) {
+                            StudentEditPage studentEditPage = new StudentEditPage();
+                            studentEditPage.setVisible(true);
+                            this.dispose();
+                            studentEditPage.nameField.setText(jLabel1.getText());
+                            studentEditPage.passField.setText(password);
+                            studentEditPage.SportsList.setSelectedItem(sArray[3]);
+                            studentEditPage.coachList.setSelectedItem(sArray[4]);
+                            studentEditPage.jLabel6.setText(sArray[5]);
+                            studentEditPage.jLabel7.setText(sArray[0]);
+                        }
+                    }
+                }
+
+            }
+            sc.close();
+        } catch (IOException e) {
+
+        }
+
+
+    }//GEN-LAST:event_editButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,11 +226,11 @@ public class StudentMainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton coachDisplayButton;
+    private javax.swing.JButton editButton;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     protected javax.swing.JLabel jLabel1;
+    private javax.swing.JButton ratingButton;
+    private javax.swing.JButton sportScheduleButton;
     // End of variables declaration//GEN-END:variables
 }

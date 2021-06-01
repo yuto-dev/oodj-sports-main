@@ -41,7 +41,7 @@ public class FeedbackPage extends javax.swing.JFrame {
         addButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         nameField = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,10 +61,10 @@ public class FeedbackPage extends javax.swing.JFrame {
         nameField.setEditable(false);
         nameField.setEnabled(false);
 
-        jButton1.setText("Cancel");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        backButton.setText("Cancel");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -74,7 +74,7 @@ public class FeedbackPage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(backButton)
                 .addGap(18, 18, 18)
                 .addComponent(addButton)
                 .addContainerGap())
@@ -103,7 +103,7 @@ public class FeedbackPage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addButton)
-                    .addComponent(jButton1))
+                    .addComponent(backButton))
                 .addContainerGap())
         );
 
@@ -112,9 +112,6 @@ public class FeedbackPage extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         String name = nameField.getText();
-        String password = "";
-        String sports = "";
-        String coach = "";
         String rating = ratingList.getSelectedItem().toString();
 
         try {
@@ -124,6 +121,7 @@ public class FeedbackPage extends javax.swing.JFrame {
             FileWriter fw = new FileWriter(newFile);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
+            int id = 1;
 
             while (sc.hasNext()) {
                 String s = sc.nextLine();
@@ -133,17 +131,12 @@ public class FeedbackPage extends javax.swing.JFrame {
                     String[] data = lines[i].split(",");
 
                     if (name.equals(data[1])) {
-                        password = data[2];
-                        sports = data[3];
-                        coach = data[4];
                         data[5] = rating;
                     }
 
                     for (int j = 0; j < data.length; j++) {
                         pw.print(data[j]);
-                        if (i < data.length - 1) {
-                            pw.print(",");
-                        }
+                        pw.print(",");
                     }
                     pw.print("\n");
                 }
@@ -165,12 +158,12 @@ public class FeedbackPage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_addButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         StudentMainPage studentMainPage = new StudentMainPage();
         studentMainPage.setVisible(true);
         this.dispose();
         studentMainPage.jLabel1.setText(nameField.getText());
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,7 +207,7 @@ public class FeedbackPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     protected javax.swing.JTextField nameField;

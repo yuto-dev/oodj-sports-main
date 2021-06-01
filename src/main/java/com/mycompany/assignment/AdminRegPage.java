@@ -27,23 +27,23 @@ public class AdminRegPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        registerCoachButton = new javax.swing.JButton();
+        registerSportButton = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Coach");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        registerCoachButton.setText("Coach");
+        registerCoachButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                registerCoachButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Sports");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        registerSportButton.setText("Sports");
+        registerSportButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                registerSportButtonActionPerformed(evt);
             }
         });
 
@@ -61,8 +61,8 @@ public class AdminRegPage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(155, 155, 155)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(registerSportButton, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                    .addComponent(registerCoachButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(167, Short.MAX_VALUE))
         );
@@ -70,9 +70,9 @@ public class AdminRegPage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(96, 96, 96)
-                .addComponent(jButton1)
+                .addComponent(registerCoachButton)
                 .addGap(28, 28, 28)
-                .addComponent(jButton2)
+                .addComponent(registerSportButton)
                 .addGap(28, 28, 28)
                 .addComponent(jButton3)
                 .addContainerGap(82, Short.MAX_VALUE))
@@ -81,17 +81,17 @@ public class AdminRegPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void registerCoachButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerCoachButtonActionPerformed
         CoachRegPage coachRegPage = new CoachRegPage();
         coachRegPage.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_registerCoachButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void registerSportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerSportButtonActionPerformed
         SportsRegPage sportsRegPage = new SportsRegPage();
         sportsRegPage.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_registerSportButtonActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         AdminMainPage adminMainPage = new AdminMainPage();
@@ -136,8 +136,8 @@ public class AdminRegPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton registerCoachButton;
+    private javax.swing.JButton registerSportButton;
     // End of variables declaration//GEN-END:variables
 }

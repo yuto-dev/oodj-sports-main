@@ -9,6 +9,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
@@ -23,6 +24,29 @@ public class StudentEditPage extends javax.swing.JFrame {
      */
     public StudentEditPage() {
         initComponents();
+
+        try {
+            File sport = new File("sports.txt");
+            File coach = new File("coach.txt");
+            Scanner ssc = new Scanner(sport);
+            Scanner csc = new Scanner(coach);
+
+            while (ssc.hasNextLine()) {
+                String s = ssc.nextLine();
+                String[] sArray = s.split("\n");
+
+                for (int i = 0; i < sArray.length; i++) {
+                    String[] sports = sArray[i].split(",");
+                    SportsList.addItem(sports[1]);
+                }
+            }
+
+            ssc.close();
+            csc.close();
+        } catch (IOException e) {
+
+        }
+
     }
 
     /**
@@ -46,6 +70,8 @@ public class StudentEditPage extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         nameField = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,16 +105,16 @@ public class StudentEditPage extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel6.setText("jLabel6");
+
+        jLabel7.setText("jLabel7");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(registerButton)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,11 +133,28 @@ public class StudentEditPage extends javax.swing.JFrame {
                         .addComponent(SportsList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(confirmpasField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(86, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(registerButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7))
+                .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -147,36 +190,52 @@ public class StudentEditPage extends javax.swing.JFrame {
         String coach = coachList.getSelectedItem().toString();
         String password = String.valueOf(passField.getPassword());
         String confirmpassword = String.valueOf(confirmpasField.getPassword());
-        int id = 1;
+        String ratings = jLabel6.getText();
+        String id = jLabel7.getText();
 
         try {
-            File file = new File("student.txt");
-            FileWriter fw = new FileWriter(file, true);
+            File oldFile = new File("student.txt");
+            File newFile = new File("temp.txt");
+            Scanner sc = new Scanner(oldFile);
+            FileWriter fw = new FileWriter(newFile);
             BufferedWriter bw = new BufferedWriter(fw);
-            Scanner sc = new Scanner(file);
+            PrintWriter pw = new PrintWriter(bw);
 
             while (sc.hasNext()) {
                 String s = sc.next();
                 String[] array = s.split("\n");
 
                 for (int i = 0; i < array.length; i++) {
-                    id = id + 1;
+                    String[] sArray = array[i].split(",");
+
+                    if (sArray[0].equals(id) & password.equals(confirmpassword)) {
+                        sArray[0] = id;
+                        sArray[1] = name;
+                        sArray[2] = password;
+                        sArray[3] = sports;
+                        sArray[4] = coach;
+                        sArray[5] = ratings;
+                    }
+
+                    for (int j = 0; j < sArray.length; j++) {
+                        pw.print(sArray[j]);
+                        pw.print(",");
+                    }
+                    pw.print("\n");
                 }
             }
-            if (password.equals(confirmpassword)) {
-                bw.write(id + "," + name + "," + password + "," + sports + "," + coach + ",0");
-                bw.newLine();
-                bw.close();
-                LoginPage loginPage = new LoginPage();
-                loginPage.setVisible(true);
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(null, "Invalid");
-            }
+            sc.close();
+            pw.flush();
+            pw.close();
+            oldFile.delete();
+            newFile.renameTo(oldFile);
 
         } catch (IOException e) {
 
         }
+        LoginPage loginPage = new LoginPage();
+        loginPage.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void SportsListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SportsListActionPerformed
@@ -193,8 +252,8 @@ public class StudentEditPage extends javax.swing.JFrame {
                 String[] sArray = s.split("\n");
 
                 for (int i = 0; i < sArray.length; i++) {
-                    while (csc.hasNext()) {
-                        String c = csc.next();
+                    while (csc.hasNextLine()) {
+                        String c = csc.nextLine();
                         String[] cArray = c.split("\n");
 
                         for (int j = 0; j < cArray.length; j++) {
@@ -216,9 +275,10 @@ public class StudentEditPage extends javax.swing.JFrame {
     }//GEN-LAST:event_SportsListActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        GuestMainPage guestMainPage = new GuestMainPage();
+        StudentMainPage guestMainPage = new StudentMainPage();
         guestMainPage.setVisible(true);
         this.dispose();
+        guestMainPage.jLabel1.setText(nameField.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -257,17 +317,19 @@ public class StudentEditPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> SportsList;
-    private javax.swing.JComboBox<String> coachList;
-    private javax.swing.JPasswordField confirmpasField;
+    protected javax.swing.JComboBox<String> SportsList;
+    protected javax.swing.JComboBox<String> coachList;
+    protected javax.swing.JPasswordField confirmpasField;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    protected javax.swing.JLabel jLabel6;
+    protected javax.swing.JLabel jLabel7;
     protected javax.swing.JTextField nameField;
-    private javax.swing.JPasswordField passField;
+    protected javax.swing.JPasswordField passField;
     private javax.swing.JButton registerButton;
     // End of variables declaration//GEN-END:variables
 }
