@@ -224,8 +224,8 @@ public class CoachRegPage extends javax.swing.JFrame {
             BufferedWriter bw = new BufferedWriter(fw);
             Scanner sc = new Scanner(file);
 
-            while (sc.hasNext()) {
-                String s = sc.next();
+            while (sc.hasNextLine()) {
+                String s = sc.nextLine();
                 String[] array = s.split("\n");
 
                 for (int i = 0; i < array.length; i++) {
